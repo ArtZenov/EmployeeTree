@@ -46,7 +46,7 @@
 
 6. **(Опционально) Для заполнения базы тестовыми данными:**
    ```bash
-   python employees/seed.py
+   python manage.py seed_data
    ```
 
 ## Запуск проекта
