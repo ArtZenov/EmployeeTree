@@ -13,9 +13,13 @@
         }
         .tree li {
             margin: 5px 0;
+            cursor: pointer;
         }
         .tree .collapsed > ul {
             display: none;
+        }
+        .tree .expanded > ul {
+            display: block;
         }
     </style>
 </head>
@@ -28,9 +32,12 @@
     </div>
     <script>
         $(document).ready(function() {
-            $('.tree li:has(ul)').addClass('collapsed').click(function(e) {
-                if ($(e.target).is('li')) {
-                    $(this).toggleClass('collapsed');
+            $('.tree li:has(ul)').addClass('collapsed');
+
+            $('.tree li').click(function(e) {
+                e.stopPropagation();
+                if ($(this).children('ul').length) {
+                    $(this).toggleClass('collapsed expanded');
                 }
             });
         });

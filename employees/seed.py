@@ -2,7 +2,6 @@ import os
 import django
 from django.conf import settings
 
-# Настройка Django перед импортом моделей
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'employeetree.settings')
 django.setup()
 
@@ -14,13 +13,10 @@ from faker import Faker
 fake = Faker()
 
 def generate_departments():
-    # Создаем корневое подразделение
     root = Department.objects.create(name="Компания")
-    # Уровень 1 (5 подразделений)
     level1 = [Department.objects.create(name=f"Отдел {i}", parent=root) for i in range(1, 6)]
-    # Уровень 2-5 (по 5 на каждом уровне)
     current_level = level1
-    for _ in range(3):  # 3 дополнительных уровня
+    for _ in range(3):
         next_level = []
         for dept in current_level:
             for i in range(1, 6):
