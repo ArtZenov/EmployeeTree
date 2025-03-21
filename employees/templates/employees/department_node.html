@@ -1,0 +1,22 @@
+{% load bootstrap4 %}
+<li>
+    <strong>{{ dept.name }}</strong>
+    {% with employees=dept.employee_set.all %}
+        {% if employees %}
+            <ul>
+                {% for employee in employees %}
+                    <li>{{ employee.full_name }} ({{ employee.position }}) - {{ employee.salary }} руб.</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% with children=dept.department_set.all %}
+        {% if children %}
+            <ul>
+                {% for child in children %}
+                    {% include 'employees/department_node.html' with dept=child %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</li>

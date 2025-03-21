@@ -1,0 +1,4 @@
+django>=3.2
+psycopg2-binary>=2.9
+django-bootstrap4>=3.0
+faker>=20.0

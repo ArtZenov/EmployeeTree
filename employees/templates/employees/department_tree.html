@@ -1,0 +1,39 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Дерево подразделений</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery=True %}
+    <style>
+        .tree ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .tree li {
+            margin: 5px 0;
+        }
+        .tree .collapsed > ul {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Структура компании</h1>
+        <div class="tree">
+            {% include 'employees/department_node.html' with dept=root_dept %}
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.tree li:has(ul)').addClass('collapsed').click(function(e) {
+                if ($(e.target).is('li')) {
+                    $(this).toggleClass('collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
