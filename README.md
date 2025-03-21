@@ -18,8 +18,8 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com/yourusername/employeetree.git
-   cd employeetree
+   git clone https://github.com/ArtZenov/EmployeeTree.git
+   cd EmployeeTree
    ```
 
 2. **Создайте и активируйте виртуальное окружение:**
